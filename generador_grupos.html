@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Grupos Cooperativos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Generador Grupos Cooperativos</h1>
+            <p>Sistema inteligente para formar 6 grupos de 4 estudiantes</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>👥 Estudiantes de la Clase (24 total)</h2>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color leader-color"></div>
+                        <span>Líderes potenciales</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color help-color"></div>
+                        <span>Necesitan apoyo</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color normal-color"></div>
+                        <span>Estudiantes regulares</span>
+                    </div>
+                </div>
+                <div class="students-grid" id="studentsGrid"></div>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-primary" onclick="generateGroups()">
+                    🎯 Generar Grupos Automáticamente
+                </button>
+                <button class="btn btn-secondary" onclick="clearGroups()">
+                    🔄 Limpiar Grupos
+                </button>
+                <button class="btn btn-secondary" onclick="showConstraints()">
+                    📋 Ver Restricciones
+                </button>
+            </div>
+
+            <div id="status"></div>
+            <div id="groupsResult" class="groups-container"></div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
