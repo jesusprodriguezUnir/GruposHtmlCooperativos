@@ -115,13 +115,20 @@ body {
 }
 
 .btn {
-    padding: 12px 24px;
+    padding: 10px 18px; /* ligeramente más pequeño */
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.95rem; /* tamaño de fuente reducido */
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     font-weight: 600;
+}
+
+/* Clase opcional para botones aún más compactos */
+.btn-small {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    border-radius: 6px;
 }
 
 .btn-primary {

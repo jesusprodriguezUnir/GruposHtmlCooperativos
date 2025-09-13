@@ -180,6 +180,7 @@ function generateGroups() {
             displayGroups(bestGroups);
                     // Guardar la configuración actual para export
                     window.currentGroups = bestGroups;
+                        updateExportButtons();
             const prefStats = countPreferencesSatisfied(bestGroups);
             const pct = prefStats.total ? Math.round(prefStats.satisfied / prefStats.total * 100) : 0;
 
@@ -236,6 +237,24 @@ function exportJSON() {
     a.remove();
     URL.revokeObjectURL(url);
     showStatus('✅ Exportado JSON (grupos.json)', 'success');
+}
+
+// --- Export buttons wiring ---
+function updateExportButtons() {
+    const csvBtn = document.getElementById('exportCsvBtn');
+    const jsonBtn = document.getElementById('exportJsonBtn');
+    const hasGroups = Array.isArray(window.currentGroups) && window.currentGroups.length > 0;
+    if (csvBtn) csvBtn.disabled = !hasGroups;
+    if (jsonBtn) jsonBtn.disabled = !hasGroups;
+}
+
+function setupExportButtons() {
+    const csvBtn = document.getElementById('exportCsvBtn');
+    const jsonBtn = document.getElementById('exportJsonBtn');
+    if (csvBtn) csvBtn.addEventListener('click', () => { exportCSV(); });
+    if (jsonBtn) jsonBtn.addEventListener('click', () => { exportJSON(); });
+    // Inicializar estado
+    updateExportButtons();
 }
 
 // Auto-generate toggle handling
@@ -369,6 +388,8 @@ function displayGroups(groups) {
 function clearGroups() {
     document.getElementById('groupsResult').innerHTML = '';
     document.getElementById('status').innerHTML = '';
+    window.currentGroups = [];
+    updateExportButtons();
 }
 
 function showConstraints() {
@@ -390,6 +411,7 @@ function showConstraints() {
 // Inicializar la aplicación y generar grupos por defecto
 renderStudents();
 setupAutoToggle();
+setupExportButtons();
 if (readAutoGenerateSetting()) {
     showStatus('👋 ¡Bienvenido! Generando grupos automáticamente al cargar.', 'info');
     generateGroups();
