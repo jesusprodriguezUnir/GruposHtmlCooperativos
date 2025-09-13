@@ -69,3 +69,17 @@ Si quieres mejorar el proyecto, envía un pull request o reporta issues con ejem
 Licencia
 
 Uso personal y educativo. Contacta al autor si quieres uso comercial.
+
+## Testing
+
+Se han añadido pruebas unitarias básicas usando Jest para las funciones lógicas principales.
+
+Instalación (requiere Node.js y npm):
+
+```powershell
+cd 'D:\Personal\Noemi\GruposHtmlCooperativos'
+npm install
+npm test
+```
+
+Los tests están en `__tests__/logic.test.js` y usan `logic.js` como módulo.

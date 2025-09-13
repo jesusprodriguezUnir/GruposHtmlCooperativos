@@ -1,0 +1,12 @@
+{
+  "name": "grupos-html-cooperativos",
+  "version": "1.0.0",
+  "description": "Generador de grupos cooperativos - pruebas unitarias",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest --silent"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
