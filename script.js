@@ -225,8 +225,18 @@ function exportCSV() {
 function exportJSON() {
     const groups = window.currentGroups || [];
     if (!groups.length) { showStatus('No hay grupos para exportar.', 'error'); return; }
+    // Mapear IDs a objetos con nombre para mayor claridad en el JSON
+    const data = {
+        generatedAt: new Date().toISOString(),
+        groups: groups.map((g, i) => ({
+            group: i + 1,
+            members: g.map(id => {
+                const student = students.find(s => s.id === id) || { id, name: 'Desconocido' };
+                return { id: student.id, name: student.name };
+            })
+        }))
+    };
 
-    const data = { generatedAt: new Date().toISOString(), groups };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
